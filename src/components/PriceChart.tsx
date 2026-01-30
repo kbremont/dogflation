@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from 'react'
+import { useMemo } from 'react'
 import { ParentSize } from '@visx/responsive'
 import { Group } from '@visx/group'
 import { LinePath } from '@visx/shape'
@@ -6,8 +6,6 @@ import { scaleTime, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { GridRows } from '@visx/grid'
 import { curveMonotoneX } from '@visx/curve'
-import { localPoint } from '@visx/event'
-import { useTooltip, TooltipWithBounds } from '@visx/tooltip'
 import type { ItemWithPrices, PriceDataPoint } from '../types'
 
 interface PriceChartProps {
@@ -15,23 +13,9 @@ interface PriceChartProps {
   visibleSlugs: Set<string>
 }
 
-interface TooltipData {
-  item: ItemWithPrices
-  point: PriceDataPoint
-}
-
 const margin = { top: 40, right: 110, bottom: 50, left: 70 }
 
 function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & { width: number; height: number }) {
-  const {
-    showTooltip,
-    hideTooltip,
-    tooltipData,
-    tooltipLeft,
-    tooltipTop,
-    tooltipOpen,
-  } = useTooltip<TooltipData>()
-
   const visibleItems = useMemo(
     () => items.filter((item) => visibleSlugs.has(item.slug)),
     [items, visibleSlugs]
@@ -77,40 +61,6 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
 
   const getX = (d: PriceDataPoint) => xScale(d.date)
   const getY = (d: PriceDataPoint) => yScale(d.percentChange)
-
-  const handleMouseMove = useCallback(
-    (event: React.MouseEvent<SVGRectElement>) => {
-      const point = localPoint(event)
-      if (!point) return
-
-      const x = point.x - margin.left
-      const date = xScale.invert(x)
-
-      let closestItem: ItemWithPrices | null = null
-      let closestPoint: PriceDataPoint | null = null
-      let closestDistance = Infinity
-
-      for (const item of visibleItems) {
-        for (const p of item.prices) {
-          const distance = Math.abs(p.date.getTime() - date.getTime())
-          if (distance < closestDistance) {
-            closestDistance = distance
-            closestItem = item
-            closestPoint = p
-          }
-        }
-      }
-
-      if (closestItem && closestPoint) {
-        showTooltip({
-          tooltipData: { item: closestItem, point: closestPoint },
-          tooltipLeft: getX(closestPoint) + margin.left,
-          tooltipTop: getY(closestPoint) + margin.top,
-        })
-      }
-    },
-    [xScale, visibleItems, showTooltip, getX, getY]
-  )
 
   const hotdogItem = visibleItems.find((i) => i.slug === 'costco-hotdog')
 
@@ -246,48 +196,9 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
             width={xMax}
             height={yMax}
             fill="transparent"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={hideTooltip}
           />
         </Group>
       </svg>
-
-      {tooltipOpen && tooltipData && (
-        <TooltipWithBounds
-          left={tooltipLeft}
-          top={tooltipTop}
-          style={{
-            backgroundColor: '#2D2D2D',
-            border: '2px solid #FFD100',
-            borderRadius: '4px',
-            padding: '8px 12px',
-            fontFamily: 'IBM Plex Mono',
-            fontSize: '12px',
-            color: '#F5F5F0',
-            boxShadow: '4px 4px 0 rgba(0,0,0,0.3)',
-          }}
-        >
-          <div className="font-bold" style={{ color: tooltipData.item.color }}>
-            {tooltipData.item.icon} {tooltipData.item.name}
-          </div>
-          <div className="mt-1">
-            {tooltipData.point.date.toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-            })}
-          </div>
-          <div className="font-bold mt-1">
-            ${tooltipData.point.price.toLocaleString(undefined, {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
-          </div>
-          <div className="text-cardboard-tan text-xs mt-1">
-            {tooltipData.point.percentChange >= 0 ? '+' : ''}
-            {tooltipData.point.percentChange.toFixed(1)}% from baseline
-          </div>
-        </TooltipWithBounds>
-      )}
     </div>
   )
 }
