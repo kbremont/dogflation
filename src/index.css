@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --costco-red: #E31837;
+  --warehouse-blue: #005DAA;
+  --price-tag-yellow: #FFD100;
+  --concrete-dark: #1a1a1a;
+  --concrete-gray: #2D2D2D;
+  --cardboard-tan: #C4A77D;
+  --receipt-white: #F5F5F0;
+  --hotdog-red: #E31837;
+  --bigmac-orange: #dd6b20;
+  --wage-green: #38a169;
+  --gold-yellow: #d69e2e;
+}
+
+html {
+  background-color: var(--concrete-dark);
+}
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--concrete-dark);
+  color: var(--receipt-white);
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  opacity: 0;
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--concrete-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--concrete-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+}
+
+/* Selection */
+::selection {
+  background: var(--price-tag-yellow);
+  color: var(--concrete-dark);
+}
