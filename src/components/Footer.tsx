@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden mt-12">
+    <footer className="relative overflow-hidden">
       {/* Corrugated metal texture */}
       <div
         className="absolute inset-0"
@@ -17,7 +17,7 @@ export function Footer() {
       {/* Top edge shadow */}
       <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-t from-transparent to-concrete-dark" />
 
-      <div className="relative z-10 py-6 px-4 text-center">
+      <div className="relative z-10 py-3 px-4 text-center">
         <p className="font-mono text-xs text-cardboard-tan">
           Data sources: The Economist Big Mac Index • FRED/DOL • World Bank
         </p>

@@ -205,7 +205,7 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
 
 export function PriceChart({ items, visibleSlugs }: PriceChartProps) {
   return (
-    <div className="w-full h-[400px] md:h-[500px] lg:h-[550px] animate-fade-in" style={{ animationDelay: '0.2s' }}>
+    <div className="w-full flex-1 min-h-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
       <ParentSize>
         {({ width, height }) => (
           <ChartContent

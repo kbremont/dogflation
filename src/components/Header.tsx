@@ -14,7 +14,7 @@ export function Header() {
         }}
       />
 
-      <div className="relative z-10 py-8 px-4 text-center">
+      <div className="relative z-10 py-4 px-4 text-center">
         <h1 className="font-bebas text-5xl md:text-7xl lg:text-8xl text-receipt-white tracking-wider animate-fade-in">
           DOGFLATION: THE COSTCO CONSTANT
         </h1>

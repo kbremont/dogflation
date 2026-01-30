@@ -52,14 +52,14 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-concrete-dark">
+    <div className="h-screen bg-concrete-dark flex flex-col overflow-hidden">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="w-full max-w-[95vw] mx-auto px-4 py-3 flex-1 flex flex-col min-h-0">
         {/* Chart + Toggle buttons row */}
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 flex-1 min-h-0 w-full">
           {/* Toggle buttons - left side */}
-          <div className="flex flex-row lg:flex-col gap-3 lg:gap-4 justify-center lg:justify-start flex-wrap lg:flex-nowrap animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <div className="flex flex-row lg:flex-col gap-2 lg:gap-3 justify-center lg:justify-start flex-wrap lg:flex-nowrap lg:pr-2 flex-shrink-0 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             {sortedItems
               .filter((item) => item.slug !== 'costco-hotdog')
               .map((item) => (
@@ -73,7 +73,7 @@ export default function App() {
           </div>
 
           {/* Chart - right side, takes remaining space */}
-          <div className="flex-1 bg-concrete-gray rounded-lg p-4 shadow-lg min-w-0">
+          <div className="flex-1 bg-concrete-gray rounded-lg p-2 lg:p-3 shadow-lg min-w-0 min-h-0 flex flex-col">
             <PriceChart items={sortedItems} visibleSlugs={visibleSlugs} />
           </div>
         </div>
