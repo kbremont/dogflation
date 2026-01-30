@@ -3,7 +3,6 @@ import { usePriceData } from './hooks/usePriceData'
 import { Header } from './components/Header'
 import { PriceChart } from './components/PriceChart'
 import { ItemToggle } from './components/ItemToggle'
-import { StatsCards } from './components/StatsCards'
 import { Footer } from './components/Footer'
 
 export default function App() {
@@ -56,30 +55,29 @@ export default function App() {
     <div className="min-h-screen bg-concrete-dark">
       <Header />
 
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* Chart */}
-        <div className="bg-concrete-gray rounded-lg p-4 shadow-lg">
-          <PriceChart items={sortedItems} visibleSlugs={visibleSlugs} />
+      <main className="max-w-7xl mx-auto px-4 py-8">
+        {/* Chart + Toggle buttons row */}
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Toggle buttons - left side */}
+          <div className="flex flex-row lg:flex-col gap-3 lg:gap-4 justify-center lg:justify-start flex-wrap lg:flex-nowrap animate-slide-up" style={{ animationDelay: '0.3s' }}>
+            {sortedItems
+              .filter((item) => item.slug !== 'costco-hotdog')
+              .map((item) => (
+                <ItemToggle
+                  key={item.id}
+                  item={item}
+                  isActive={visibleSlugs.has(item.slug)}
+                  onToggle={() => toggleItem(item.slug)}
+                />
+              ))}
+          </div>
+
+          {/* Chart - right side, takes remaining space */}
+          <div className="flex-1 bg-concrete-gray rounded-lg p-4 shadow-lg min-w-0">
+            <PriceChart items={sortedItems} visibleSlugs={visibleSlugs} />
+          </div>
         </div>
 
-        {/* Toggle buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mt-8 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-          {sortedItems
-            .filter((item) => item.slug !== 'costco-hotdog')
-            .map((item) => (
-              <ItemToggle
-                key={item.id}
-                item={item}
-                isActive={visibleSlugs.has(item.slug)}
-                onToggle={() => toggleItem(item.slug)}
-              />
-            ))}
-        </div>
-
-        {/* Stats */}
-        <div className="mt-12">
-          <StatsCards items={items} />
-        </div>
       </main>
 
       <Footer />
