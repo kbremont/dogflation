@@ -54,7 +54,7 @@ npm install
 
 # Set up environment variables
 cp .env.example .env.local
-# Add your Supabase URL and anon key
+# Add your Supabase URL and publishable key
 
 # Run development server
 npm run dev
@@ -64,7 +64,7 @@ npm run dev
 
 ```
 VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 ```
 
 ## Project Structure
@@ -105,4 +105,29 @@ CREATE TABLE prices (
   price DECIMAL(10,2) NOT NULL,
   UNIQUE(item_id, date)
 );
+```
+
+## CI/CD
+
+Database migrations are automatically applied via GitHub Actions when changes are pushed to `main`.
+
+**Workflow:** `.github/workflows/supabase.yml`
+
+**Required GitHub Secrets:**
+
+| Secret | Description |
+|--------|-------------|
+| `SUPABASE_ACCESS_TOKEN` | Personal access token from supabase.com → Account → Access Tokens |
+| `SUPABASE_PROJECT_REF` | Project reference ID from Project Settings → General |
+
+**Adding a new migration:**
+
+```bash
+# Create a new migration file
+supabase migration new my_migration_name
+
+# Edit the generated file in supabase/migrations/
+
+# Push to main - GitHub Actions will apply it automatically
+git add . && git commit -m "Add migration" && git push
 ```
