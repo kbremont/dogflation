@@ -8,9 +8,6 @@ export function Footer() {
         <p className="font-mono text-xs text-text-muted">
           Data sources: The Economist Big Mac Index • FRED/DOL • World Bank
         </p>
-        <p className="font-costco font-bold text-sm text-costco-blue mt-2">
-          Thank you for shopping at Dogflation
-        </p>
         <p className="font-mono text-xs text-text-muted mt-1">
           Keeping it $1.50 since 1985
         </p>
