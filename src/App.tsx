@@ -73,7 +73,7 @@ export default function App() {
           </div>
 
           {/* Chart - right side, takes remaining space */}
-          <div className="flex-1 bg-concrete-gray rounded-lg p-2 lg:p-3 shadow-lg min-w-0 min-h-[250px] sm:min-h-[300px] lg:min-h-0 flex flex-col">
+          <div className="bg-concrete-gray rounded-lg p-2 lg:p-3 shadow-lg min-w-0 h-[250px] sm:h-[300px] lg:h-auto lg:flex-1 flex flex-col">
             <PriceChart items={sortedItems} visibleSlugs={visibleSlugs} />
           </div>
         </div>
