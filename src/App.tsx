@@ -8,11 +8,11 @@ import { Footer } from './components/Footer'
 export default function App() {
   const { data: items, loading, error } = usePriceData()
   const [visibleSlugs, setVisibleSlugs] = useState<Set<string>>(
-    new Set(['costco-hotdog', 'big-mac', 'minimum-wage', 'movie-ticket'])
+    new Set(['costco-hotdog', 'big-mac', 'minimum-wage', 'movie-ticket', 'gas'])
   )
 
   const sortedItems = useMemo(() => {
-    const order = ['costco-hotdog', 'big-mac', 'minimum-wage', 'movie-ticket']
+    const order = ['costco-hotdog', 'big-mac', 'minimum-wage', 'movie-ticket', 'gas']
     return [...items].sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug))
   }, [items])
 
