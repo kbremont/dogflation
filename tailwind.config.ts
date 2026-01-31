@@ -16,7 +16,6 @@ export default {
         'hotdog-red': '#E31837',
         'bigmac-orange': '#dd6b20',
         'wage-green': '#38a169',
-        'gold-yellow': '#d69e2e',
         'movie-purple': '#9333ea',
       },
       fontFamily: {

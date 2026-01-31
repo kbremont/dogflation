@@ -7,7 +7,6 @@ interface StatsCardsProps {
 export function StatsCards({ items }: StatsCardsProps) {
   const hotdog = items.find((i) => i.slug === 'costco-hotdog')
   const wage = items.find((i) => i.slug === 'minimum-wage')
-  const gold = items.find((i) => i.slug === 'gold')
 
   const yearsUnchanged = hotdog
     ? new Date().getFullYear() - new Date(hotdog.prices[0]?.date ?? new Date()).getFullYear()
@@ -27,13 +26,6 @@ export function StatsCards({ items }: StatsCardsProps) {
       label: 'Wage increase',
       sublabel: 'nat\'l avg minimum',
       color: 'text-wage-green',
-    },
-    {
-      value: gold ? `${Math.round(gold.percentChange / 100) * 100}%+` : '1,000%+',
-      unit: '',
-      label: 'Gold increase',
-      sublabel: 'per troy ounce',
-      color: 'text-gold-yellow',
     },
   ]
 
