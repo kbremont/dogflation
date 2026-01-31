@@ -39,12 +39,10 @@ Visx (by Airbnb) gives us low-level D3 primitives in React. This means:
 
 Historical price comparisons:
 - 🌭 **Costco Hotdog** - $1.50 (flat line since 1985)
-- 🥇 **Gold (per oz)** - Historical spot prices
-- 🏟️ **Stadium Hot Dog** - Average MLB ballpark prices
+- ⛽ **Gas** - Average US gas price per gallon
 - 🎬 **Movie Ticket** - Average US ticket price
 - 🍔 **Big Mac Index** - The Economist's data
 - 💵 **Minimum Wage** - Federal minimum wage over time
-- 📈 **S&P 500** - Index value (normalized)
 
 ## Getting Started
 
