@@ -15,7 +15,7 @@ export function Header() {
       />
 
       <div className="relative z-10 py-4 px-4 text-center">
-        <h1 className="font-bebas text-5xl md:text-7xl lg:text-8xl text-receipt-white tracking-wider animate-fade-in">
+        <h1 className="font-bebas text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-receipt-white tracking-wider animate-fade-in">
           DOGFLATION: THE COSTCO CONSTANT
         </h1>
 
@@ -23,7 +23,7 @@ export function Header() {
           <span className="text-3xl">🌭</span> $1.50 SINCE 1985 <span className="text-3xl">🌭</span>
         </p>
 
-        <blockquote className="font-mono text-sm md:text-base text-cardboard-tan mt-4 max-w-2xl mx-auto italic animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <blockquote className="font-mono text-sm md:text-base text-cardboard-tan mt-2 sm:mt-4 max-w-2xl mx-auto italic animate-fade-in" style={{ animationDelay: '0.2s' }}>
           "If you raise the price of the f***ing hot dog, I will kill you."
           <footer className="text-receipt-white/60 mt-1 not-italic">— Jim Sinegal, Costco Co-founder</footer>
         </blockquote>

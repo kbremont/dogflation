@@ -52,7 +52,7 @@ export default function App() {
   }
 
   return (
-    <div className="h-screen bg-concrete-dark flex flex-col overflow-hidden">
+    <div className="min-h-screen lg:h-screen bg-concrete-dark flex flex-col lg:overflow-hidden">
       <Header />
 
       <main className="w-full max-w-[95vw] mx-auto px-4 py-3 flex-1 flex flex-col min-h-0">
@@ -73,7 +73,7 @@ export default function App() {
           </div>
 
           {/* Chart - right side, takes remaining space */}
-          <div className="flex-1 bg-concrete-gray rounded-lg p-2 lg:p-3 shadow-lg min-w-0 min-h-0 flex flex-col">
+          <div className="flex-1 bg-concrete-gray rounded-lg p-2 lg:p-3 shadow-lg min-w-0 min-h-[250px] sm:min-h-[300px] lg:min-h-0 flex flex-col">
             <PriceChart items={sortedItems} visibleSlugs={visibleSlugs} />
           </div>
         </div>
