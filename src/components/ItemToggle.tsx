@@ -7,39 +7,34 @@ interface ItemToggleProps {
 }
 
 export function ItemToggle({ item, isActive, onToggle }: ItemToggleProps) {
-  const rotations = [-2, 1, -1, 2]
-  const rotation = rotations[item.name.length % rotations.length]
-
   return (
     <button
       onClick={onToggle}
       className={`
         relative px-4 py-3 min-w-[120px]
-        font-oswald text-sm md:text-base
-        border-3 border-black
+        font-costco text-sm md:text-base
+        border-2 rounded
         transition-all duration-200
-        hover:scale-105 hover:shadow-lg
-        focus:outline-none focus:ring-2 focus:ring-warehouse-blue
+        hover:scale-105
+        focus:outline-none focus:ring-2 focus:ring-costco-blue focus:ring-offset-2 focus:ring-offset-warehouse-white
         ${isActive
-          ? 'bg-price-tag-yellow text-black shadow-[4px_4px_0_#000]'
-          : 'bg-concrete-gray text-receipt-white/60 shadow-[2px_2px_0_#000]'
+          ? 'bg-warehouse-gray border-text-muted text-text-dark shadow-md'
+          : 'bg-warehouse-dark border-gray-600 text-text-muted'
         }
       `}
-      style={{
-        transform: `rotate(${rotation}deg)`,
-        borderWidth: '3px',
-      }}
     >
       <div className="text-2xl mb-1">{item.icon}</div>
       <div className="font-bold truncate">{item.name}</div>
-      <div className="font-mono text-xs mt-1">
+      <div className={`font-mono text-lg font-bold mt-1 ${isActive ? 'text-costco-red' : 'text-text-muted'}`}>
         ${item.latestPrice.toLocaleString(undefined, {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}
       </div>
       {isActive && (
-        <div className="absolute -top-1 -right-1 w-3 h-3 bg-costco-red rounded-full" />
+        <div className="absolute -top-1 -right-1 w-4 h-4 bg-costco-red rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-bold">✓</span>
+        </div>
       )}
     </button>
   )

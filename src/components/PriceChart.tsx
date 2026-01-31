@@ -82,7 +82,7 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
           y={0}
           width={width}
           height={height}
-          fill="#1a1a1a"
+          fill="#1F2937"
           rx={4}
         />
 
@@ -90,9 +90,9 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
           <GridRows
             scale={yScale}
             width={xMax}
-            stroke="#3a3a3a"
+            stroke="#4B5563"
             strokeDasharray="4,4"
-            strokeOpacity={0.5}
+            strokeOpacity={0.8}
           />
 
           {/* Draw all lines except hot dog first */}
@@ -105,7 +105,7 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
                 x={getX}
                 y={getY}
                 stroke={item.color}
-                strokeWidth={2}
+                strokeWidth={2.5}
                 strokeOpacity={0.9}
                 curve={curveMonotoneX}
               />
@@ -137,6 +137,7 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
                 fill={item.color}
                 fontSize={12}
                 fontFamily="IBM Plex Mono"
+                fontWeight={600}
                 alignmentBaseline="middle"
               >
                 {item.icon} ${item.latestPrice.toLocaleString(undefined, {
@@ -150,10 +151,10 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
           <AxisBottom
             top={yMax}
             scale={xScale}
-            stroke="#5a5a5a"
-            tickStroke="#5a5a5a"
+            stroke="#6B7280"
+            tickStroke="#6B7280"
             tickLabelProps={{
-              fill: '#999',
+              fill: '#9CA3AF',
               fontSize: 11,
               fontFamily: 'IBM Plex Mono',
               textAnchor: 'middle',
@@ -163,10 +164,10 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
 
           <AxisLeft
             scale={yScale}
-            stroke="#5a5a5a"
-            tickStroke="#5a5a5a"
+            stroke="#6B7280"
+            tickStroke="#6B7280"
             tickLabelProps={{
-              fill: '#999',
+              fill: '#9CA3AF',
               fontSize: 11,
               fontFamily: 'IBM Plex Mono',
               textAnchor: 'end',
@@ -181,7 +182,7 @@ function ChartContent({ items, visibleSlugs, width, height }: PriceChartProps & 
             x={-yMax / 2}
             y={-50}
             transform="rotate(-90)"
-            fill="#777"
+            fill="#9CA3AF"
             fontSize={12}
             fontFamily="IBM Plex Mono"
             textAnchor="middle"

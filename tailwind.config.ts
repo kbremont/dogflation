@@ -6,21 +6,21 @@ export default {
     extend: {
       colors: {
         'costco-red': '#E31837',
-        'warehouse-blue': '#005DAA',
+        'costco-blue': '#005DAA',
         'price-tag-yellow': '#FFD100',
-        'concrete-dark': '#1a1a1a',
-        'concrete-gray': '#2D2D2D',
-        'cardboard-tan': '#C4A77D',
-        'receipt-white': '#F5F5F0',
+        'warehouse-white': '#1F2937',
+        'warehouse-gray': '#374151',
+        'warehouse-dark': '#111827',
+        'text-dark': '#F3F4F6',
+        'text-muted': '#9CA3AF',
         'hotdog-red': '#E31837',
         'bigmac-orange': '#dd6b20',
         'wage-green': '#38a169',
         'gold-yellow': '#d69e2e',
       },
       fontFamily: {
-        'bebas': ['"Bebas Neue"', 'sans-serif'],
+        'costco': ['"Nunito Sans"', 'sans-serif'],
         'mono': ['"IBM Plex Mono"', 'monospace'],
-        'oswald': ['Oswald', 'sans-serif'],
       },
       animation: {
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',

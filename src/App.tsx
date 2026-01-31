@@ -30,10 +30,10 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-concrete-dark flex items-center justify-center">
+      <div className="min-h-screen bg-warehouse-white flex items-center justify-center">
         <div className="text-center">
           <div className="text-6xl mb-4 animate-bounce">🌭</div>
-          <p className="font-mono text-receipt-white">Loading prices...</p>
+          <p className="font-mono text-costco-red font-semibold">Loading prices...</p>
         </div>
       </div>
     )
@@ -41,18 +41,18 @@ export default function App() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-concrete-dark flex items-center justify-center">
+      <div className="min-h-screen bg-warehouse-white flex items-center justify-center">
         <div className="text-center max-w-md px-4">
           <div className="text-6xl mb-4">😢</div>
-          <p className="font-mono text-costco-red mb-2">Failed to load data</p>
-          <p className="font-mono text-receipt-white/60 text-sm">{error}</p>
+          <p className="font-mono text-costco-red mb-2 font-semibold">Failed to load data</p>
+          <p className="font-mono text-text-muted text-sm">{error}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen lg:h-screen bg-concrete-dark flex flex-col lg:overflow-hidden">
+    <div className="min-h-screen lg:h-screen bg-warehouse-white flex flex-col lg:overflow-hidden">
       <Header />
 
       <main className="w-full max-w-[95vw] mx-auto px-4 py-3 flex-1 flex flex-col min-h-0">
@@ -73,7 +73,7 @@ export default function App() {
           </div>
 
           {/* Chart - right side, takes remaining space */}
-          <div className="bg-concrete-gray rounded-lg p-2 lg:p-3 shadow-lg min-w-0 h-[250px] sm:h-[300px] lg:h-auto lg:flex-1 flex flex-col">
+          <div className="bg-warehouse-gray rounded-lg p-2 lg:p-3 shadow-md border border-gray-600 min-w-0 h-[250px] sm:h-[300px] lg:h-auto lg:flex-1 flex flex-col">
             <PriceChart items={sortedItems} visibleSlugs={visibleSlugs} />
           </div>
         </div>
